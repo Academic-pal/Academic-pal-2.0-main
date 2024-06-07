@@ -865,27 +865,7 @@ body {
 
 
 /* Fade-in effect */
-.fade-in {
-  opacity: 0;
-  transition: opacity 1s ease-in;
-}
 
-.fade-in.visible {
-  opacity: 1;
-}
-
-
-/* Slide-in effect */
-.slide-in-left {
-  transform: translateX(-100%);
-  opacity: 0;
-  transition: transform 1s ease-in, opacity 1s ease-in;
-}
-
-.slide-in-left.visible {
-  transform: translateX(0);
-  opacity: 1;
-}
 
   </style>
 </head>
@@ -921,7 +901,7 @@ body {
   </nav>
 </header>
 
-<section id="home" class="hero"   class="about-intro fade-in">
+<section id="home" class="hero"   class="about-intro ">
   <div class="overlay"></div>
   <div class="hero-content">
     <div class="logo2">
@@ -933,32 +913,32 @@ body {
   </div>
 </section>
 
-<section id="features" class="features fade-in">
-  <div class="feature-card slide-in-left">
+<section id="features" class="features ">
+  <div class="feature-card ">
     <img src="icon1.jpeg" alt="Feature 1">
     <h3>Comprehensive Notes📚</h3>
     <p>Access detailed and well-organized notes for all subjects. Each note is designed to help you grasp key concepts and prepare efficiently for your exams.</p>
     <a href="#">Learn More</a>
   </div>
-  <div class="feature-card slide-in-left">
+  <div class="feature-card ">
     <img src="icon2.jpeg" alt="Feature 2">
     <h3>Past Question Papers📝</h3>
     <p>Review previous years' question papers to understand the exam pattern and frequently asked questions. This will help you practice and improve your answering.</p>
     <a href="#">Learn More</a>
   </div>
-  <div class="feature-card slide-in-left">
+  <div class="feature-card ">
     <img src="icon3.jpeg" alt="Feature 3">
     <h3>Important Questions ❓</h3>
     <p>Get a curated list of important questions for each subject. Focus on these questions to maximize your preparation and score higher in exams.</p>
     <a href="#">Learn More</a>
   </div>
-  <div class="feature-card slide-in-left">
+  <div class="feature-card ">
     <img src="icon4.jpeg" alt="Feature 4">
     <h3>Detailed Syllabus📄</h3>
     <p>Stay updated with the latest syllabus for all your subjects. Make sure you're studying the right topics as prescribed by the educational board.</p>
     <a href="#">Learn More</a>
   </div>
-  <div class="feature-card slide-in-left">
+  <div class="feature-card ">
     <img src="icon5.jpeg" alt="Feature 5">
     <h3>Extensive Question Banks📂</h3>
     <p>Explore a wide range of question banks that cover various topics and difficulty levels. Use these for rigorous practice and to test your knowledge comprehensively.</p>
@@ -970,7 +950,7 @@ body {
  
  
 
-<section id="about" class="about-intro fade-in">
+<section id="about" class="about-intro ">
   <h1>About Academic Pal</h1>
   <p>Academic Pal is dedicated to helping students achieve academic excellence. Our platform offers comprehensive study materials, expert guidance, and innovative tools to support students throughout their educational journey.</p>
   <p>With Academic Pal, students can access detailed notes, past question papers, important questions, and much more. We aim to empower students with the resources they need to succeed in their academic endeavors.</p>
@@ -982,7 +962,7 @@ body {
   <blockquote>"Empowering students to reach their full potential."</blockquote>
 </section>
 
-<section class="team fade-in">
+<section class="team ">
   <div class="team-member">
     <img src="member1.jpeg" alt="Team Member 1">
     <h3>Hariharanath</h3>
@@ -1020,7 +1000,7 @@ body {
   <i class="fa fa-search"></i>
 </section>
 
-<section class="filter-section fade-in">
+<section class="filter-section ">
   <select>
     <option value="all">All Categories</option>
     <option value="math">Math</option>
@@ -1029,7 +1009,7 @@ body {
   <button>Apply Filters</button>
 </section>
 
-<section class="notes-grid fade-in">
+<section class="notes-grid ">
   <div class="note-card ">
     <img src="btech1.jpeg" alt="B.Tech 1st Sem">
     <h3>B.Tech 1st Sem</h3>
@@ -1074,13 +1054,13 @@ body {
   </div>
 </section>
 
-<section class="pagination fade-in">
+<section class="pagination ">
   <button id="prevBtn">Previous</button>
   <span class="currentPage">1</span>
   <button id="nextBtn">Next</button>
 </section>
     
-<section id="contact " class="contact-form fade-in">
+<section id="contact " class="contact-form ">
   <h2>Contact Us</h2>
   <form>
    
@@ -1128,7 +1108,7 @@ body {
             <a href="https://instagram.com/hari_hara_nath77"><i class="fab fa-instagram"></i></a>
             <a href="https://github.com/Hari-hara7"><i class="fab fa-github"></i></a>
           </div>
-          <div class="contact-info fade-in">
+          <div class="contact-info ">
             <p>Email: Academicpalhari@gmail.com</p>
             <p>Phone: 7989777877</p>
             <p>Address: Nitte, Karkala, Karnataka</p>
@@ -1151,6 +1131,9 @@ body {
 
     
     <script>
+
+
+     
 document.addEventListener("DOMContentLoaded", function () {
       gsap.registerPlugin(ScrollTrigger);
 
@@ -1180,31 +1163,6 @@ document.addEventListener("DOMContentLoaded", function () {
           }
         });
       });
-
-      const hamburgerMenu = document.getElementById("hamburger-menu");
-      const navLinksMobile = document.getElementById("nav-links-mobile");
-
-      hamburgerMenu.addEventListener("click", function () {
-        navLinksMobile.classList.toggle("open");
-      });
-    });
-
-document.addEventListener("DOMContentLoaded", function () {
-  // GSAP and ScrollTrigger Animation
-  gsap.registerPlugin(ScrollTrigger);
-
-  gsap.utils.toArray(".fade-in").forEach(function (element) {
-    gsap.fromTo(element, { opacity: 0 }, {
-      opacity: 1,
-      scrollTrigger: {
-        trigger: element,
-        start: "top 75%",
-        end: "bottom 25%",
-        scrub: true,
-        toggleActions: "play none none reverse"
-      }
-    });
-  });
 
   // Hamburger menu functionality for mobile view
   const hamburgerMenu = document.getElementById("hamburger-menu");
