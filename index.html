@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Academic Pal</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <style>
+    body {
+      background-color: #000000;
+      color: #FFFFFF;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      scroll-behavior: smooth;
+    }
+    a {
+      color: #FFFFFF;
+      text-decoration: none;
+    }
+    a:hover {
+      color: #FFC107;
+    }
+    header {
+      background-color: #000000;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1em;
+    }
+    .logo {
+      font-size: 1.5em;
+      font-weight: bold;
+    }
+    .nav-links {
+      list-style: none;
+      display: flex;
+    }
+    .nav-links li {
+      margin-left: 2em;
+    }
+    .nav-links li a {
+      padding: 0.5em 1em;
+    }
+    .login-button {
+      margin-left: 2em;
+      padding: 0.5em 1em;
+      background-color: #FFC107;
+      border: none;
+      color: #000000;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: background-color 0.3s;
+    }
+    .login-button:hover {
+      background-color: #FFD54F;
+    }
+    .hamburger-menu {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+    .hamburger-menu span {
+      height: 2px;
+      width: 25px;
+      background: #FFFFFF;
+      margin: 4px;
+      transition: 0.3s;
+    }
+    .nav-links-mobile {
+      display: none;
+      flex-direction: column;
+      background-color: #000000;
+      position: absolute;
+      top: 60px;
+      right: 0;
+      width: 100%;
+    }
+    .nav-links-mobile.active {
+      display: flex;
+    }
+    .nav-links-mobile li {
+      text-align: center;
+      padding: 1em;
+      border-top: 1px solid #000000;
+    }
+    @media (max-width: 768px) {
+      .nav-links, .login-button {
+        display: none;
+      }
+      .hamburger-menu {
+        display: flex;
+      }
+    }
+    .hero {
+      position: relative;
+      height: 100vh;
+      background: url('background.jpg') no-repeat center center/cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 2em;
+    }
+    .hero .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: 1;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+    .hero h1 {
+      font-size: 3em;
+      color: #FFC107;
+    }
+    .hero p {
+      font-size: 1.2em;
+      margin-top: 1em;
+    }
+    .cta-button {
+      margin-top: 2em;
+      padding: 0.8em 1.5em;
+      background-color: #FFC107;
+      border: none;
+      color: #000000;
+      font-size: 1em;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: background-color 0.3s;
+    }
+    .cta-button:hover {
+      background-color: #FFD54F;
+    }
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2em;
+      padding: 4em;
+      background-color: #000000;
+    }
+    .feature-card {
+      padding: 2em;
+      background-color: #2c2c2c;
+      text-align: center;
+      border-radius: 8px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .feature-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    }
+    .feature-card img {
+      width: 200px;
+      height: 200px;
+    }
+    .feature-card h3 {
+      margin-top: 1em;
+      color: #FFC107;
+    }
+    .feature-card p {
+      margin-top: 0.5em;
+    }
+    .feature-card a {
+      margin-top: 1em;
+      display: inline-block;
+      padding: 0.5em 1em;
+      background-color: #FFC107;
+      color: #121212;
+      border-radius: 4px;
+      transition: background-color 0.3s;
+    }
+    .feature-card a:hover {
+      background-color: #FFD54F;
+    }
+    footer {
+      background-color: #000000;
+      padding: 2em;
+      text-align: center;
+    }
+    .footer-links a {
+      margin: 0 1em;
+    }
+    .social-media-icons a {
+      margin: 0 0.5em;
+      color: #FFFFFF;
+      transition: color 0.3s;
+    }
+    .social-media-icons a:hover {
+      color: #FFC107;
+    }
+    .newsletter-signup input[type="email"] {
+      padding: 0.5em;
+      margin-right: 0.5em;
+      border: none;
+      border-radius: 4px;
+    }
+    .newsletter-signup button {
+      padding: 0.5em 1em;
+      background-color: #FFC107;
+      border: none;
+      color: #121212;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: background-color 0.3s;
+    }
+    .newsletter-signup button:hover {
+      background-color: #FFD54F;
+    }
+    .about-intro, .mission-statement, .team, .notes-grid, .contact-form, .contact-info, .map {
+      padding: 4em 2em;
+      text-align: center;
+    }
+    .about-intro img {
+      width: 100%;
+      max-width: 500px;
+      margin-top: 2em;
+    }
+    .mission-statement blockquote {
+      font-size: 1.5em;
+      color: #FFC107;
+      background-color: #2f2f2f;
+      padding: 2em;
+      border-radius: 8px;
+      display: inline-block;
+    }
+    .team {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2em;
+    }
+    .team-member img {
+      width: 100%;
+      border-radius: 50%;
+    }
+    .team-member h3 {
+      margin-top: 1em;
+      color: #FFC107;
+    }
+    .team-member p {
+      margin-top: 0.5em;
+    }
+    .search-bar {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      margin: 2em 0;
+    }
+    .search-bar input {
+      width: 100%;
+      max-width: 400px;
+      padding: 0.5em;
+      border: none;
+      border-radius: 4px;
+      background-color: #2c2c2c;
+      color: #FFFFFF;
+    }
+    .search-bar i {
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      color: #FFFFFF;
+    }
+    .filter-section {
+      display: flex;
+      justify-content: center;
+      gap: 1em;
+      margin-bottom: 2em;
+    }
+    .filter-section select, .filter-section button {
+      padding: 0.5em;
+      border: none;
+      border-radius: 4px;
+      background-color: #2c2c2c;
+      color: #FFFFFF;
+    }
+    .filter-section button {
+      background-color: #FFC107;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .filter-section button:hover {
+      background-color: #FFD54F;
+    }
+    .notes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2em;
+    }
+    .note-card {
+      padding: 2em;
+      background-color: #2c2c2c;
+      text-align: center;
+      border-radius: 8px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .note-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    }
+    .note-card h3 {
+      color: #FFC107;
+    }
+    .note-card a {
+      display: inline-block;
+      margin-top: 1em;
+      padding: 0.5em 1em;
+      background-color: #FFC107;
+      color: #121212;
+      border-radius: 4px;
+      transition: background-color 0.3s;
+    }
+    .note-card a:hover {
+      background-color: #FFD54F;
+    }
+    .pagination {
+      display: flex;
+      justify-content: center;
+      gap: 1em;
+      margin: 2em 0;
+    }
+    .pagination button, .pagination span {
+      padding: 0.5em 1em;
+      background-color: #2c2c2c;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .pagination button:hover {
+      background-color: #FFD54F;
+    }
+    .contact-form form {
+      display: grid;
+      gap: 1em;
+    }
+    .contact-form input, .contact-form textarea {
+      padding: 0.5em;
+      border: none;
+      border-radius: 4px;
+      background-color: #2c2c2c;
+      color: #FFFFFF;
+    }
+    .contact-form button {
+      padding: 0.5em 1em;
+      background-color: #FFC107;
+      border: none;
+      color: #121212;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: background-color 0.3s;
+    }
+    .contact-form button:hover {
+      background-color: #FFD54F;
+    }
+    .map iframe {
+      width: 100%;
+      height: 400px;
+      border: none;
+    }
+
+    .logo img {
+      height: 85px; /* Adjust the height of the logo as needed */
+      width: auto;
+    }
+    .logo2 img {
+      height: 200px; /* Adjust the height of the logo as needed */
+      width: auto;
+    }
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 1.5em; /* Adjust the font size for smaller screens */
+      }
+      .hero p {
+        font-size: 1em; /* Adjust the font size for smaller screens */
+      }
+      
+    }
+    @media (max-width: 768px) {
+  .mission-statement blockquote {
+    font-size: 1.2em; /* Adjust the font size for smaller screens */
+  }
+}
+
+
+
+
+    .feature-card, .note-card {
+      transition: transform 0.3s, box-shadow 0.3s; /* Add smooth transition for transform and box-shadow */
+    }
+
+    .feature-card:hover, .note-card:hover {
+      transform: translateY(-10px); /* Move cards up on hover */
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5); /* Add shadow effect on hover */
+    }
+
+    .three-d-object {
+      width: 100%;
+      height: 300px; /* Adjust height as needed */
+      margin-top: 50px; /* Adjust margin as needed */
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <nav class="navbar">
+    <div class="logo">
+        <img src="logo.png" alt="Academic Pal Logo"> <!-- Replace "logo.png" with the path to your logo image -->
+      </div>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#notes">Notes</a></li>
+      
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="login-button">Login</button>
+    <div class="hamburger-menu" id="hamburger-menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <ul class="nav-links-mobile" id="nav-links-mobile">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#notes">Notes</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <button class="login-button">Login</button>
+      
+      <li><button class="login-button">Login</button></li>
+    </ul>
+  </nav>
+</header>
+
+<section id="home" class="hero">
+  <div class="overlay"></div>
+  <div class="hero-content">
+    <div class="logo2">
+      <img src="logo2.png" alt="Academic Pal Logo"> <!-- Replace "logo.png" with the path to your logo image -->
+    </div>
+    <h1>Your Gateway to Academic Excellence</h1>
+    <p>Discover the benefits of Academic Pal and how it can assist you in achieving your academic goals.</p>
+    <button class="cta-button">Get Started</button>
+  </div>
+</section>
+
+<section id="features" class="features">
+  <div class="feature-card">
+    <img src="icon1.jpeg" alt="Feature 1">
+    <h3>Comprehensive Notes📚</h3>
+    <p>  Access detailed and well-organized notes for all subjects. Each note is designed to help you grasp key concepts and prepare efficiently for your exams.</p>
+    <a href="#">Learn More</a>
+  </div>
+  <div class="feature-card">
+    <img src="icon2.jpeg" alt="Feature 2">
+    <h3>Past Question Papers📝</h3>
+    <p>Review previous years' question papers to understand the exam pattern and frequently asked questions. This will help you practice and improve your answering .</p>
+    <a href="#">Learn More</a>
+  </div>
+  <div class="feature-card">
+    <img src="icon3.jpeg" alt="Feature 3">
+    <h3>Important Questions ❓</h3>
+    <p>  Get a curated list of important questions for each subject. Focus on these questions to maximize your preparation and score higher in exams.</p>
+    <a href="#">Learn More</a>
+  </div>
+  <div class="feature-card">
+    <img src="icon4.jpeg" alt="Feature 3">
+    <h3>Detailed Syllabus📄</h3>
+    <p>   Stay updated with the latest syllabus for all your subjects. Make sure you're studying the right topics as prescribed by the educational board.</p>
+    <a href="#">Learn More</a>
+  </div>
+
+  <div class="feature-card">
+    <img src="icon5.jpeg" alt="Feature 3">
+    <h3>Extensive Question Banks📂</h3>
+    <p>   Explore a wide range of question banks that cover various topics and difficulty levels. Use these for rigorous practice and to test your knowledge comprehensively.</p>
+    <a href="#">Learn More</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-links">
+    <a href="#privacy">Privacy Policy</a>
+    <a href="#terms">Terms of Service</a>
+  </div>
+  <div class="social-media-icons">
+    <a href="#"><i class="fa fa-facebook"></i></a>
+    <a href="#"><i class="fa fa-twitter"></i></a>
+    <a href="#"><i class="fa fa-instagram"></i></a>
+  </div>
+  <div class="contact-info">
+    <p>Email: contact@academicpal.com</p>
+    <p>Phone: +1234567890</p>
+    <p>Address: 123 Academic Pal St.</p>
+  </div>
+  <div class="newsletter-signup">
+    <form>
+      <input type="email" placeholder="Enter your email">
+      <button type="submit">Subscribe</button>
+    </form>
+  </div>
+</footer>
+
+<section id="about" class="about-intro">
+  <h1>About Academic Pal</h1>
+  <p>Academic Pal is dedicated to helping students achieve academic excellence...</p>
+  <img src="aboutus.png" alt="About Us">
+</section>
+
+<section class="mission-statement">
+  <blockquote>"Empowering students to reach their full potential."</blockquote>
+</section>
+
+<section class="team">
+  <div class="team-member">
+    <img src="member1.jpeg" alt="Team Member 1">
+    <h3>Hariharanath</h3>
+    <p>CEO & Founder</p>
+  </div>
+  <div class="team-member">
+    <img src="member2.jpeg" alt="Team Member 2">
+    <h3>Hariharanath</h3>
+    <p>CTO</p>
+  </div>
+  <div class="team-member">
+    <img src="designer.jpeg" alt="Designer">
+    <h3>Hariharanath</h3>
+    <p>Lead Designer</p>
+  </div>
+  <div class="team-member">
+    <img src="developer.jpeg" alt="Developer">
+    <h3>Hariharanath</h3>
+    <p> Developer</p>
+  </div>
+  <div class="team-member">
+    <img src="seo_optimizer.jpeg" alt="SEO Optimizer">
+    <h3>Hariharanath</h3>
+    <p>SEO Optimizer</p>
+  </div>
+  <div class="team-member">
+    <img src="marketing.jpeg" alt="Marketing">
+    <h3>Hariharanath</h3>
+    <p>Marketing Manager</p>
+  </div>
+</section>
+
+<section id="notes" class="search-bar">
+  <input type="text" placeholder="Search notes...">
+  <i class="fa fa-search"></i>
+</section>
+
+<section class="filter-section">
+  <select>
+    <option value="all">All Categories</option>
+    <option value="math">Math</option>
+    <option value="science">Science</option>
+  </select>
+  <button>Apply Filters</button>
+</section>
+
+<section class="notes-grid">
+  <div class="note-card">
+    <h3>Note Title 1</h3>
+    <p>Brief description of the note 1...</p>
+    <a href="#">View Full Note</a>
+  </div>
+  <div class="note-card">
+    <h3>Note Title 2</h3>
+    <p>Brief description of the note 2...</p>
+    <a href="#">View Full Note</a>
+  </div>
+  <div class="note-card">
+    <h3>Note Title 3</h3>
+    <p>Brief description of the note 3...</p>
+    <a href="#">View Full Note</a>
+  </div>
+  <div class="note-card">
+    <h3>Note Title 4</h3>
+    <p>Brief description of the note 4...</p>
+    <a href="#">View Full Note</a>
+  </div>
+  <div class="note-card">
+    <h3>Note Title 5</h3>
+    <p>Brief description of the note 5...</p>
+    <a href="#">View Full Note</a>
+  </div>
+  <div class="note-card">
+    <h3>Note Title 6</h3>
+    <p>Brief description of the note 6...</p>
+    <a href="#">View Full Note</a>
+  </div>
+  <div class="note-card">
+    <h3>Note Title 7</h3>
+    <p>Brief description of the note 7...</p>
+    <a href="#">View Full Note</a>
+  </div>
+</section>
+
+<section class="pagination">
+  <button id="prevBtn">Previous</button>
+  <span class="currentPage">1</span>
+  <button id="nextBtn">Next</button>
+</section>
+    
+    <section id="contact" class="contact-form">
+      <form>
+        <input type="text" placeholder="Name">
+        <input type="email" placeholder="Email">
+        <input type="text" placeholder="Subject">
+        <textarea placeholder="Message"></textarea>
+        <button type="submit">Submit</button>
+      </form>
+    </section>
+    
+    <section class="contact-info">
+      <p>Email: contact@academicpal.com</p>
+      <p>Phone: +1234567890</p>
+      <p>Address: 123 Academic Pal St.</p>
+      <div class="social-media-icons">
+        <a href="#"><i class="fa fa-facebook"></i></a>
+        <a href="#"><i class="fa fa-twitter"></i></a>
+        <a href="#"><i class="fa fa-instagram"></i></a>
+      </div>
+    </section>
+
+    <div id="background"></div>
+    <div class="container">
+       
+           
+
+       
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="script.js"></script>
+   
+    <section class="map">
+      <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3890.384340145323!2d74.73927621536968!3d13.219815390690597!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bbc85929131a179%3A0x268173ec9e2b4d42!2sNMAM%20Institute%20of%20Technology!5e0!3m2!1sen!2sin!4v1628057642784!5m2!1sen!2sin"
+      allowfullscreen=""
+      loading="lazy"
+    ></iframe>
+    </section>
+    
+    <script>
+
+
+function init3DBackground() {
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({ antialias: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    document.getElementById('background').appendChild(renderer.domElement);
+
+    // Add space background
+    const spaceTexture = new THREE.TextureLoader().load('https://threejs.org/examples/textures/space.jpg');
+    scene.background = spaceTexture;
+
+    // Add stars
+    const starGeometry = new THREE.SphereGeometry(0.1, 24, 24);
+    const starMaterial = new THREE.MeshBasicMaterial({ color: 0xffffff });
+    for (let i = 0; i < 1000; i++) {
+        const star = new THREE.Mesh(starGeometry, starMaterial);
+        const [x, y, z] = Array(3).fill().map(() => THREE.MathUtils.randFloatSpread(1000));
+        star.position.set(x, y, z);
+        scene.add(star);
+    }
+
+    // Add animated planet
+    const planetTexture = new THREE.TextureLoader().load('https://threejs.org/examples/textures/planets/earth_atmos_2048.jpg');
+    const planetGeometry = new THREE.SphereGeometry(3, 32, 32);
+    const planetMaterial = new THREE.MeshBasicMaterial({ map: planetTexture });
+    const planet = new THREE.Mesh(planetGeometry, planetMaterial);
+    scene.add(planet);
+
+    // Add animated asteroids
+    const asteroidTexture = new THREE.TextureLoader().load('https://threejs.org/examples/textures/sprites/disc.png');
+    const asteroidGeometry = new THREE.PlaneGeometry(2, 2);
+    const asteroidMaterial = new THREE.MeshBasicMaterial({ map: asteroidTexture, transparent: true });
+    const asteroids = [];
+    for (let i = 0; i < 50; i++) {
+        const asteroid = new THREE.Mesh(asteroidGeometry, asteroidMaterial);
+        const distance = THREE.MathUtils.randFloat(100, 300);
+        const angle = Math.random() * Math.PI * 2;
+        const x = Math.cos(angle) * distance;
+        const y = Math.sin(angle) * distance;
+        const z = THREE.MathUtils.randFloatSpread(200);
+        asteroid.position.set(x, y, z);
+        asteroids.push(asteroid);
+        scene.add(asteroid);
+    }
+
+    camera.position.z = 10;
+
+    // Animate planets and asteroids
+    function animate() {
+        requestAnimationFrame(animate);
+        planet.rotation.y += 0.005;
+        asteroids.forEach(asteroid => {
+            asteroid.rotation.z += 0.01;
+        });
+        renderer.render(scene, camera);
+    }
+
+    animate();
+
+    // Adjust camera and renderer on window resize
+    window.addEventListener('resize', () => {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+}
+
+init3DBackground();
+
+
+
+
+
+
+
+      document.getElementById('hamburger-menu').addEventListener('click', function() {
+        const mobileMenu = document.getElementById('nav-links-mobile');
+        mobileMenu.classList.toggle('active');
+        document.querySelectorAll('.hamburger-menu span').forEach(span => {
+          span.classList.toggle('active');
+        });
+      });
+    
+      // Close mobile menu when a link is clicked
+      document.querySelectorAll('.nav-links-mobile li a').forEach(link => {
+        link.addEventListener('click', function() {
+          const mobileMenu = document.getElementById('nav-links-mobile');
+          mobileMenu.classList.remove('active');
+          document.querySelectorAll('.hamburger-menu span').forEach(span => {
+            span.classList.remove('active');
+          });
+        });
+      });
+
+      const noteCards = document.querySelectorAll('.note-card');
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  const currentPage = document.querySelector('.currentPage');
+  const itemsPerPage = 3; // Number of note cards to show per page
+  let currentPageNumber = 1;
+  
+  showPage(currentPageNumber);
+
+  prevBtn.addEventListener('click', () => {
+    if (currentPageNumber > 1) {
+      currentPageNumber--;
+      showPage(currentPageNumber);
+    }
+  });
+
+  nextBtn.addEventListener('click', () => {
+    if (currentPageNumber < Math.ceil(noteCards.length / itemsPerPage)) {
+      currentPageNumber++;
+      showPage(currentPageNumber);
+    }
+  });
+
+  function showPage(pageNumber) {
+    const startIndex = (pageNumber - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+
+    noteCards.forEach((card, index) => {
+      if (index >= startIndex && index < endIndex) {
+        card.style.display = 'block';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+
+    currentPage.textContent = pageNumber;
+  }
+
+
+
+
+
+
+
+
+
+    </script>
+    
+    </body>
+    </html>
+    
