@@ -830,7 +830,38 @@ body {
     margin-bottom: 10px;
   }
 }
+/* Default styles */
+.about-intro h1 {
+  font-size: 32px; /* Default font size */
+  line-height: 1.5;
+}
 
+.about-intro p {
+  font-size: 18px; /* Default font size */
+  line-height: 1.6;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+  .about-intro h1 {
+    font-size: 25px; /* Reduce font size for mobile */
+  }
+  
+  .about-intro p {
+    font-size: 16px; /* Reduce font size for mobile */
+  }
+}
+
+/* Smooth color change for h1 */
+@keyframes colorChange {
+  0% { color: #FFC107; }
+  100% { color: #dd1313; }
+}
+
+@keyframes colorChange {
+  0% { color: #FFC107; }
+  100% { color: #FFFFFF; }
+}
 
 
   </style>
@@ -1041,16 +1072,7 @@ body {
 </section>
 
     
-    <section class="contact-info">
-      <p>Email: contact@academicpal.com</p>
-      <p>Phone: +1234567890</p>
-      <p>Address: 123 Academic Pal St.</p>
-      <div class="social-media-icons">
-        <a href="#"><i class="fa fa-facebook"></i></a>
-        <a href="#"><i class="fa fa-twitter"></i></a>
-        <a href="#"><i class="fa fa-instagram"></i></a>
-      </div>
-    </section>
+ 
 
     <div id="background"></div>
     <div class="container">
