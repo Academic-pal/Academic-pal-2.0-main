@@ -874,6 +874,19 @@ body {
   opacity: 1;
 }
 
+
+/* Slide-in effect */
+.slide-in-left {
+  transform: translateX(-100%);
+  opacity: 0;
+  transition: transform 1s ease-in, opacity 1s ease-in;
+}
+
+.slide-in-left.visible {
+  transform: translateX(0);
+  opacity: 1;
+}
+
   </style>
 </head>
 <body>
@@ -921,35 +934,34 @@ body {
 </section>
 
 <section id="features" class="features fade-in">
-  <div class="feature-card">
+  <div class="feature-card slide-in-left">
     <img src="icon1.jpeg" alt="Feature 1">
     <h3>Comprehensive Notes📚</h3>
-    <p>  Access detailed and well-organized notes for all subjects. Each note is designed to help you grasp key concepts and prepare efficiently for your exams.</p>
+    <p>Access detailed and well-organized notes for all subjects. Each note is designed to help you grasp key concepts and prepare efficiently for your exams.</p>
     <a href="#">Learn More</a>
   </div>
-  <div class="feature-card">
+  <div class="feature-card slide-in-left">
     <img src="icon2.jpeg" alt="Feature 2">
     <h3>Past Question Papers📝</h3>
-    <p>Review previous years' question papers to understand the exam pattern and frequently asked questions. This will help you practice and improve your answering .</p>
+    <p>Review previous years' question papers to understand the exam pattern and frequently asked questions. This will help you practice and improve your answering.</p>
     <a href="#">Learn More</a>
   </div>
-  <div class="feature-card">
+  <div class="feature-card slide-in-left">
     <img src="icon3.jpeg" alt="Feature 3">
     <h3>Important Questions ❓</h3>
-    <p>  Get a curated list of important questions for each subject. Focus on these questions to maximize your preparation and score higher in exams.</p>
+    <p>Get a curated list of important questions for each subject. Focus on these questions to maximize your preparation and score higher in exams.</p>
     <a href="#">Learn More</a>
   </div>
-  <div class="feature-card">
-    <img src="icon4.jpeg" alt="Feature 3">
+  <div class="feature-card slide-in-left">
+    <img src="icon4.jpeg" alt="Feature 4">
     <h3>Detailed Syllabus📄</h3>
-    <p>   Stay updated with the latest syllabus for all your subjects. Make sure you're studying the right topics as prescribed by the educational board.</p>
+    <p>Stay updated with the latest syllabus for all your subjects. Make sure you're studying the right topics as prescribed by the educational board.</p>
     <a href="#">Learn More</a>
   </div>
-
-  <div class="feature-card">
-    <img src="icon5.jpeg" alt="Feature 3">
+  <div class="feature-card slide-in-left">
+    <img src="icon5.jpeg" alt="Feature 5">
     <h3>Extensive Question Banks📂</h3>
-    <p>   Explore a wide range of question banks that cover various topics and difficulty levels. Use these for rigorous practice and to test your knowledge comprehensively.</p>
+    <p>Explore a wide range of question banks that cover various topics and difficulty levels. Use these for rigorous practice and to test your knowledge comprehensively.</p>
     <a href="#">Learn More</a>
   </div>
 </section>
@@ -1017,51 +1029,50 @@ body {
   <button>Apply Filters</button>
 </section>
 
-<section class="notes-grid" class="notes-grid fade-in" >
-  <div class="note-card">
+<section class="notes-grid fade-in">
+  <div class="note-card ">
     <img src="btech1.jpeg" alt="B.Tech 1st Sem">
     <h3>B.Tech 1st Sem</h3>
     <p>Explore notes covering foundational subjects like Mathematics, Physics, and Basic Electronics. Build a strong conceptual understanding to kickstart your engineering journey.</p>
     <a href="#">View Full Notes</a>
   </div>
-  <div class="note-card">
+  <div class="note-card ">
     <img src="btech2.jpeg" alt="B.Tech 2nd Sem">
     <h3>B.Tech 2nd Sem</h3>
     <p>Dive deeper into core engineering disciplines with subjects like Digital Electronics, Data Structures, and Algorithms. Lay the groundwork for advanced topics.</p>
     <a href="#">View Full Notes</a>
   </div>
-  <div class="note-card">
+  <div class="note-card ">
     <img src="btech3.jpeg" alt="B.Tech 3rd Sem">
     <h3>B.Tech 3rd Sem</h3>
     <p>Expand your knowledge in subjects such as Object-Oriented Programming, Database Management Systems, and Computer Networks. Gain practical skills for software development.</p>
     <a href="#">View Full Notes</a>
   </div>
-  <div class="note-card">
+  <div class="note-card ">
     <img src="btech4.jpeg" alt="B.Tech 4th Sem">
     <h3>B.Tech 4th Sem</h3>
     <p>Deepen your understanding of advanced topics like Operating Systems, Software Engineering, and Web Technologies. Prepare for real-world software development projects.</p>
     <a href="#">View Full Notes</a>
   </div>
-  <div class="note-card">
+  <div class="note-card ">
     <img src="btech5.jpeg" alt="B.Tech 5th Sem">
     <h3>B.Tech 5th Sem</h3>
     <p>Specialize in your chosen field with elective subjects like Machine Learning, Artificial Intelligence, and Cybersecurity. Explore cutting-edge technologies.</p>
     <a href="#">View Full Notes</a>
   </div>
-  <div class="note-card">
+  <div class="note-card ">
     <img src="btech6.jpeg" alt="B.Tech 6th Sem">
     <h3>B.Tech 6th Sem</h3>
     <p>Prepare for your career with subjects focusing on professional development, project management, and industry-oriented skills. Get ready to enter the workforce.</p>
     <a href="#">View Full Notes</a>
   </div>
-  <div class="note-card">
+  <div class="note-card ">
     <img src="btech7.jpeg" alt="B.Tech 7th Sem">
     <h3>B.Tech 7th Sem</h3>
     <p>Conclude your academic journey with a capstone project, internships, and advanced topics in your chosen specialization. Gear up for graduation and beyond.</p>
     <a href="#">View Full Notes</a>
   </div>
 </section>
-
 
 <section class="pagination fade-in">
   <button id="prevBtn">Previous</button>
@@ -1140,7 +1151,43 @@ body {
 
     
     <script>
+document.addEventListener("DOMContentLoaded", function () {
+      gsap.registerPlugin(ScrollTrigger);
 
+      gsap.utils.toArray(".fade-in").forEach(function (element) {
+        gsap.fromTo(element, { opacity: 0 }, {
+          opacity: 1,
+          scrollTrigger: {
+            trigger: element,
+            start: "top 75%",
+            end: "bottom 25%",
+            scrub: true,
+            toggleActions: "play none none reverse"
+          }
+        });
+      });
+
+      gsap.utils.toArray(".slide-in-left").forEach(function (element) {
+        gsap.fromTo(element, { x: '-100%', opacity: 0 }, {
+          x: '0%',
+          opacity: 1,
+          scrollTrigger: {
+            trigger: element,
+            start: "top 75%",
+            end: "bottom 25%",
+            scrub: true,
+            toggleActions: "play none none reverse"
+          }
+        });
+      });
+
+      const hamburgerMenu = document.getElementById("hamburger-menu");
+      const navLinksMobile = document.getElementById("nav-links-mobile");
+
+      hamburgerMenu.addEventListener("click", function () {
+        navLinksMobile.classList.toggle("open");
+      });
+    });
 
 document.addEventListener("DOMContentLoaded", function () {
   // GSAP and ScrollTrigger Animation
