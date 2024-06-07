@@ -593,7 +593,7 @@ body {
     width: 100%; /* Make the image fill the entire width of its container */
     height: auto; /* Ensure the image maintains its aspect ratio */
     border-radius: 8px; /* Add rounded corners to the image */
-    border: 2px solid #c8bb0d; /* Add a border around the image */
+    border: 2px solid #ffffff; /* Add a border around the image */
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Add a subtle shadow effect */
 }
 
@@ -624,6 +624,32 @@ body {
     background-color: #ddd;
     border-radius: 5px;
 }
+
+.note-card {
+    position: relative;
+    border: 2px solid transparent; /* Transparent border initially */
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.note-card::before {
+    content: "";
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    border: 2px solid yellow; /* Yellow border */
+    border-radius: 12px;
+    z-index: -1;
+}
+
+.note-card:hover::before {
+    border-color: yellow; /* Change border color on hover */
+}
+
+/* Rest of your CSS styles for note-card */
 
 
   </style>
