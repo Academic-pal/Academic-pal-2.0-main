@@ -864,11 +864,21 @@ body {
 }
 
 
+/* Fade-in effect */
+.fade-in {
+  opacity: 0;
+  transition: opacity 1s ease-in;
+}
+
+.fade-in.visible {
+  opacity: 1;
+}
+
   </style>
 </head>
 <body>
 
-<header>
+<header class="fade-in">
   <nav class="navbar">
     <div class="logo">
         <img src="logo.png" alt="Academic Pal Logo"> <!-- Replace "logo.png" with the path to your logo image -->
@@ -898,7 +908,7 @@ body {
   </nav>
 </header>
 
-<section id="home" class="hero">
+<section id="home" class="hero"   class="about-intro fade-in">
   <div class="overlay"></div>
   <div class="hero-content">
     <div class="logo2">
@@ -910,7 +920,7 @@ body {
   </div>
 </section>
 
-<section id="features" class="features">
+<section id="features" class="features fade-in">
   <div class="feature-card">
     <img src="icon1.jpeg" alt="Feature 1">
     <h3>Comprehensive Notes📚</h3>
@@ -948,7 +958,7 @@ body {
  
  
 
-<section id="about" class="about-intro">
+<section id="about" class="about-intro fade-in">
   <h1>About Academic Pal</h1>
   <p>Academic Pal is dedicated to helping students achieve academic excellence. Our platform offers comprehensive study materials, expert guidance, and innovative tools to support students throughout their educational journey.</p>
   <p>With Academic Pal, students can access detailed notes, past question papers, important questions, and much more. We aim to empower students with the resources they need to succeed in their academic endeavors.</p>
@@ -960,7 +970,7 @@ body {
   <blockquote>"Empowering students to reach their full potential."</blockquote>
 </section>
 
-<section class="team">
+<section class="team fade-in">
   <div class="team-member">
     <img src="member1.jpeg" alt="Team Member 1">
     <h3>Hariharanath</h3>
@@ -993,12 +1003,12 @@ body {
   </div>
 </section>
 
-<section id="notes" class="search-bar">
+<section id="notes" class="search-bar fade-in">
   <input type="text" placeholder="Search notes...">
   <i class="fa fa-search"></i>
 </section>
 
-<section class="filter-section">
+<section class="filter-section fade-in">
   <select>
     <option value="all">All Categories</option>
     <option value="math">Math</option>
@@ -1007,7 +1017,7 @@ body {
   <button>Apply Filters</button>
 </section>
 
-<section class="notes-grid">
+<section class="notes-grid" class="notes-grid fade-in" >
   <div class="note-card">
     <img src="btech1.jpeg" alt="B.Tech 1st Sem">
     <h3>B.Tech 1st Sem</h3>
@@ -1053,13 +1063,13 @@ body {
 </section>
 
 
-<section class="pagination">
+<section class="pagination fade-in">
   <button id="prevBtn">Previous</button>
   <span class="currentPage">1</span>
   <button id="nextBtn">Next</button>
 </section>
     
-<section id="contact" class="contact-form">
+<section id="contact " class="contact-form fade-in">
   <h2>Contact Us</h2>
   <form>
    
@@ -1085,7 +1095,7 @@ body {
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script src="script.js"></script>
    
-    <section class="map">
+    <section class="map fade-in">
       <iframe
       src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3890.384340145323!2d74.73927621536968!3d13.219815390690597!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bbc85929131a179%3A0x268173ec9e2b4d42!2sNMAM%20Institute%20of%20Technology!5e0!3m2!1sen!2sin!4v1628057642784!5m2!1sen!2sin"
       allowfullscreen=""
@@ -1107,7 +1117,7 @@ body {
             <a href="https://instagram.com/hari_hara_nath77"><i class="fab fa-instagram"></i></a>
             <a href="https://github.com/Hari-hara7"><i class="fab fa-github"></i></a>
           </div>
-          <div class="contact-info">
+          <div class="contact-info fade-in">
             <p>Email: Academicpalhari@gmail.com</p>
             <p>Phone: 7989777877</p>
             <p>Address: Nitte, Karkala, Karnataka</p>
@@ -1125,12 +1135,38 @@ body {
       </div>
     </footer>
     
-    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
+
     
     <script>
 
 
+document.addEventListener("DOMContentLoaded", function () {
+  // GSAP and ScrollTrigger Animation
+  gsap.registerPlugin(ScrollTrigger);
 
+  gsap.utils.toArray(".fade-in").forEach(function (element) {
+    gsap.fromTo(element, { opacity: 0 }, {
+      opacity: 1,
+      scrollTrigger: {
+        trigger: element,
+        start: "top 75%",
+        end: "bottom 25%",
+        scrub: true,
+        toggleActions: "play none none reverse"
+      }
+    });
+  });
+
+  // Hamburger menu functionality for mobile view
+  const hamburgerMenu = document.getElementById("hamburger-menu");
+  const navLinksMobile = document.getElementById("nav-links-mobile");
+
+  hamburgerMenu.addEventListener("click", function () {
+    navLinksMobile.classList.toggle("open");
+  });
+});
 
 
 
