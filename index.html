@@ -27,82 +27,96 @@
       color: #FFC107;
     }
     header {
-      background-color: #000000;
-      position: fixed;
-      top: 0;
-      width: 100%;
-      z-index: 1000;
-    }
-    .navbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1em;
-    }
-    .logo {
-      font-size: 1.5em;
-      font-weight: bold;
-    }
-    .nav-links {
-      list-style: none;
-      display: flex;
-    }
-    .nav-links li {
-      margin-left: 2em;
-    }
-    .nav-links li a {
-      padding: 0.5em 1em;
-    }
-    .login-button {
-      margin-left: 2em;
-      padding: 0.5em 1em;
-      background-color: #FFC107;
-      border: none;
-      color: #000000;
-      cursor: pointer;
-      border-radius: 4px;
-      transition: background-color 0.3s;
-    }
-    .login-button:hover {
-      background-color: #FFD54F;
-    }
-    .hamburger-menu {
-      display: none;
-      flex-direction: column;
-      cursor: pointer;
-    }
-    .hamburger-menu span {
-      height: 2px;
-      width: 25px;
-      background: #FFFFFF;
-      margin: 4px;
-      transition: 0.3s;
-    }
-    .nav-links-mobile {
-      display: none;
-      flex-direction: column;
-      background-color: #000000;
-      position: absolute;
-      top: 60px;
-      right: 0;
-      width: 100%;
-    }
-    .nav-links-mobile.active {
-      display: flex;
-    }
-    .nav-links-mobile li {
-      text-align: center;
-      padding: 1em;
-      border-top: 1px solid #000000;
-    }
-    @media (max-width: 768px) {
-      .nav-links, .login-button {
-        display: none;
-      }
-      .hamburger-menu {
-        display: flex;
-      }
-    }
+  background-color: #000000;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+header {
+  background-color: #000000;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1em;
+}
+.logo {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+.nav-links {
+  list-style: none;
+  display: flex;
+}
+.nav-links li {
+  margin-left: 2em;
+}
+.nav-links li a {
+  padding: 0.5em 1em;
+  color: #ffffff;
+  text-decoration: none;
+}
+.login-button, .login-button-mobile {
+  padding: 0.5em 1em;
+  background-color: #FFC107;
+  border: none;
+  color: #000000;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+.login-button:hover, .login-button-mobile:hover {
+  background-color: #FFD54F;
+}
+.hamburger-menu {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+.hamburger-menu span {
+  height: 2px;
+  width: 25px;
+  background: #FFD54F;
+  margin: 4px;
+  transition: 0.3s;
+}
+.nav-links-mobile {
+  display: none;
+  flex-direction: column;
+  background-color: #000000;
+  position: absolute;
+  top: 60px;
+  right: 0;
+  width: 100%;
+  padding: 0;
+}
+.nav-links-mobile.active {
+  display: flex;
+}
+.nav-links-mobile li {
+  text-align: center;
+  padding: 1em;
+  border-top: 1px solid #333333;
+}
+.nav-links-mobile li a {
+  color: #FFFFFF;
+  text-decoration: none;
+}
+@media (max-width: 768px) {
+  .nav-links, .login-button {
+    display: none;
+  }
+  .hamburger-menu {
+    display: flex;
+  }
+}
+
     .hero {
       position: relative;
       height: 100vh;
@@ -1078,35 +1092,33 @@ body {
 </head>
 <body>
 
-<header class="">
-  <nav class="navbar">
-    <div class="logo">
+  <header>
+    <nav class="navbar">
+      <div class="logo">
         <img src="logo.png" alt="Academic Pal Logo"> <!-- Replace "logo.png" with the path to your logo image -->
       </div>
-    <ul class="nav-links">
-      <li><a href="#home">Home</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#notes">Notes</a></li>
-      
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-    <button class="login-button">Login</button>
-    <div class="hamburger-menu" id="hamburger-menu">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-    <ul class="nav-links-mobile" id="nav-links-mobile">
-      <li><a href="#home">Home</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#notes">Notes</a></li>
-      <li><a href="#contact">Contact</a></li>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#notes">Notes</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
       <button class="login-button">Login</button>
-      
-      <li><button class="login-button">Login</button></li>
-    </ul>
-  </nav>
-</header>
+      <div class="hamburger-menu" id="hamburger-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul class="nav-links-mobile" id="nav-links-mobile">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#notes">Notes</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><button class="login-button-mobile">Login</button></li>
+      </ul>
+    </nav>
+  </header>
+  
 
 <section id="home" class="hero"   class="about-intro ">
   <div class="overlay"></div>
