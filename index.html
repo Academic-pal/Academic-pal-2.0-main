@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Academic Pal</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+
   <style>
     body {
       background-color: #000000;
@@ -961,6 +963,114 @@ body {
   }
 }
 
+
+
+.footer {
+  background-color: #000000;
+  padding: 2em;
+  text-align: center;
+  color: #FFFFFF;
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2em;
+}
+
+.footer-links a,
+.contact-info p,
+.social-media-icons a {
+  color: #FFFFFF;
+  text-decoration: none;
+  margin: 0.5em 0;
+}
+
+.social-media-icons a {
+  margin: 0 1em;
+  font-size: 1.5em;
+  color: #FFFFFF;
+  transition: color 0.3s;
+}
+
+.social-media-icons a:hover {
+  color: #FFC107;
+}
+
+.contact-info a {
+  color: #FFFFFF;
+  text-decoration: none;
+}
+
+.contact-info a i {
+  margin-right: 0.5em;
+}
+
+.newsletter-signup form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1em;
+}
+
+.newsletter-signup input {
+  padding: 0.5em;
+  border-radius: 5px;
+  border: none;
+}
+
+.newsletter-signup button {
+  padding: 0.5em 1em;
+  background-color: #FFC107;
+  color: #000;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.newsletter-signup button:hover {
+  background-color: #FFB300;
+}
+.logo-container {
+  margin-bottom: 1em;
+}
+
+.footer-logo {
+  width: 150px; /* Adjust the size as needed */
+}
+
+
+
+
+.contact-info {
+  text-align: center;
+  line-height: 1.6;
+}
+
+.contact-info h2 {
+  margin-bottom: 1em;
+  font-size: 1.8em;
+}
+
+.contact-info p {
+  margin: 0.3em 0; /* Reduced gap between contact info */
+  font-size: 1em;
+}
+
+.contact-info a {
+  color: #FFB300;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+
+.contact-info a i {
+  margin-right: 0.5em;
+  font-size: 1.2em;
+}
+
   </style>
 </head>
 <body>
@@ -1216,20 +1326,30 @@ body {
     <footer class="footer">
       <div class="container">
         <div class="footer-content">
+          <div class="logo-container">
+            <img src="logo.png" alt="Academic Pal Logo" class="footer-logo"> <!-- Replace "path/to/your/logo.png" with the actual path to your logo image -->
+          </div>
           <div class="footer-links">
             <a href="https://www.privacypolicies.com/live/0b697d9c-92ec-451c-8619-68f264fabd20">Privacy Policy</a>
             <a href="https://www.privacypolicies.com/live/0b697d9c-92ec-451c-8619-68f264fabd20">Terms of Service</a>
           </div>
           <div class="social-media-icons">
-            <a href="https://www.linkedin.com/in/hari-hara-nath-a13583282/"><i class="fab fa-linkedin"></i></a> 
+            <a href="https://www.linkedin.com/in/hari-hara-nath-a13583282/"><i class="fab fa-linkedin"></i></a>
             <a href="https://x.com/Hariharana70309?t=Ib05QY4zN8F41MsLHAix5Q&s=09"><i class="fab fa-twitter"></i></a>
             <a href="https://instagram.com/hari_hara_nath77"><i class="fab fa-instagram"></i></a>
             <a href="https://github.com/Hari-hara7"><i class="fab fa-github"></i></a>
           </div>
-          <div class="contact-info ">
-            <p>Email: Academicpalhari@gmail.com</p>
-            <p>Phone: 7989777877</p>
-            <p>Address: Nitte, Karkala, Karnataka</p>
+          <div class="contact-info">
+            <h2>Contact Us</h2>
+            <p>Academic Pal</p>
+            <p>NMAM Institute of Technology</p>
+            <p>Nitte, Karkala Taluk,</p>
+            <p>Udupi-574110</p>
+            <p>Karnataka, India</p>
+            <p><a href="mailto:academicpalhari@gmail.com"><i class="fas fa-envelope"></i> Email: academicpalhari@gmail.com</a></p>
+            <p><a href="tel:+917989777877"><i class="fas fa-phone"></i> Phone: +91-7989777877</a></p>
+            <p>Designed and Developed by Hariharanath</p>
+            <p>Computer Science (Full Stack Development)</p>
           </div>
           <div class="newsletter-signup">
             <form>
@@ -1243,6 +1363,7 @@ body {
         </div>
       </div>
     </footer>
+    
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
