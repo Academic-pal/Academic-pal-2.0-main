@@ -1129,18 +1129,4 @@ html {
   }
   
   /* Responsive adjustments */
-  @media (max-width: 768px) {
-    .hero-content h1 {
-      font-size: 1.5em;
-    }
-  
-    .hero-content p {
-      font-size: 1em;
-    }
-  
-    .cta-button {
-      padding: 0.5em 1em;
-      font-size: 1em;
-    }
-  }
-  
+ 
