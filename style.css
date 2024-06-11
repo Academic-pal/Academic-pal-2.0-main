@@ -1130,3 +1130,25 @@ html {
   
   /* Responsive adjustments */
  
+
+  @media (max-width: 768px) {
+    .hero-content {
+      padding: 1em;
+    }
+  
+    .hero-content h1 {
+      font-size: 1.8em;
+      text-align: center;
+    }
+  
+    .hero-content p {
+      font-size: 1em;
+      text-align: center;
+      margin-bottom: 1em;
+    }
+  
+    .cta-button {
+      padding: 0.5em 1em;
+      font-size: 1em;
+    }
+  }
