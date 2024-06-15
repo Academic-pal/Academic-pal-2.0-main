@@ -1244,3 +1244,45 @@ html {
   text-transform: uppercase; /* Optionally, uppercase */
   letter-spacing: 1px; /* Adjust as needed */
 }
+
+
+
+
+.transition-color {
+  background: linear-gradient(90deg, #FFD700, #FFA500); /* Gradient from gold to orange */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: background-position 0.5s ease-in-out;
+  background-size: 200% auto;
+  background-clip: text;
+  animation: gradient 10s ease infinite;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+.branding h2 {
+  font-size: 24px;
+  font-weight: 700; /* Bold */
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  animation: colorChange 5s infinite alternate; /* Apply animation */
+}
+
+/* Keyframes for color change animation */
+@keyframes colorChange {
+  0% {
+    color: #c94908; /* Yellow */
+  }
+  100% {
+    color:  #FFA500; /* Another color */
+  }
+}
