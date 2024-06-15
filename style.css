@@ -1229,3 +1229,18 @@ html {
   }
 }
 
+
+/* Add this style to your existing CSS */
+.branding h2 {
+  color: #ffffff;
+  font-size: 20px;
+  margin: 0;
+}
+
+.branding h2 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 24px;
+  font-weight: 700; /* Bold */
+  text-transform: uppercase; /* Optionally, uppercase */
+  letter-spacing: 1px; /* Adjust as needed */
+}
