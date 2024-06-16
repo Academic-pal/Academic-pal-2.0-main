@@ -1286,3 +1286,37 @@ html {
     color:  #FFA500; /* Another color */
   }
 }
+
+
+
+
+
+.about-intro img {
+  
+  margin: 10px;
+  border: 5px solid;
+  border-radius: 10px;
+  animation: borderAnimation 3s infinite;
+}
+
+/* Keyframes for Border Animation */
+@keyframes borderAnimation {
+  0% {
+    border-color: #FF0000; /* Red */
+  }
+  20% {
+    border-color: #FFA500; /* Orange */
+  }
+  40% {
+    border-color: #FFFF00; /* Yellow */
+  }
+  60% {
+    border-color: #008000; /* Green */
+  }
+  80% {
+    border-color: #0000FF; /* Blue */
+  }
+  100% {
+    border-color: #800080; /* Purple */
+  }
+}
