@@ -2,7 +2,7 @@
     "name": "Academic Pal 2.0",
     "short_name": "AcademicPal2.0",
     "description": "Your Gateway to Academic Excellence",
-    "start_url": "/",
+    "start_url": "https://academic-pal-v9t9.onrender.com",
     "display": "standalone",
     "background_color": "#000000",
     "theme_color": "#007bff",
