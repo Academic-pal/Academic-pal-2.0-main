@@ -196,3 +196,38 @@ if ('serviceWorker' in navigator) {
     });
   });
 }
+
+
+
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  const platforms = document.querySelectorAll('.platform');
+  const academicPal = document.querySelector('.academic-pal');
+  const students = document.querySelector('.students');
+  const svg = document.getElementById('connections');
+
+  platforms.forEach(platform => {
+      connectElements(platform, academicPal);
+  });
+
+  connectElements(academicPal, students);
+
+  function connectElements(fromElement, toElement) {
+      const fromRect = fromElement.getBoundingClientRect();
+      const toRect = toElement.getBoundingClientRect();
+      const svgRect = svg.getBoundingClientRect();
+
+      const startX = fromRect.left + fromRect.width / 2 - svgRect.left;
+      const startY = fromRect.bottom - svgRect.top;
+      const endX = toRect.left + toRect.width / 2 - svgRect.left;
+      const endY = toRect.top - svgRect.top;
+
+      const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+      path.setAttribute('d', `M ${startX} ${startY} C ${startX} ${(startY + endY) / 2}, ${endX} ${(startY + endY) / 2}, ${endX} ${endY}`);
+      path.classList.add('connection');
+      path.style.strokeDashoffset = path.getTotalLength();
+
+      svg.appendChild(path);
+  }
+});
