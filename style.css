@@ -1194,48 +1194,47 @@ html {
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css');
 
 /* Bottom Icons */
-.bottom-icons {
+/* Bottom Navigation */
+.bottom-nav {
   position: fixed;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
+  bottom: 0;
+  width: 100%;
+  background-color: #000000;
   display: flex;
   justify-content: space-around;
-  width: 90%;
-  max-width: 400px;
-  padding: 15px;
-  border-radius: 25px;
-  background: rgba(255, 255, 255, 0.1);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  align-items: center;
+  padding: 10px 0;
+  z-index: 1000;
 }
 
-.bottom-icons a {
-  color: #FFD700; /* Yellow color */
+.bottom-nav .nav-item {
+    background-color: #000000;
+    
+    
+    color:  #FFC107;
+  text-align: center;
+  flex: 1;
+  text-decoration: none;
+}
+
+.bottom-nav .nav-item i {
+  display: block;
   font-size: 24px;
-  transition: color 0.3s, transform 0.3s;
-  margin: 0 15px; /* Increase gap between icons */
+  margin-bottom: 5px;
 }
 
-.bottom-icons a:hover {
-  color: #FFA500; /* Slightly different shade on hover */
-  transform: scale(1.1); /* Slightly enlarge on hover */
+.bottom-nav .nav-item span {
+  font-size: 12px;
 }
 
-/* Media queries for responsiveness */
-@media (max-width: 600px) {
-  .bottom-icons {
-    width: 90%;
-    padding: 15px;
-  }
-
-  .bottom-icons a {
-    font-size: 24px;
-    margin: 0 10px; /* Adjust gap for smaller screens */
-  }
+.bottom-nav .nav-item:hover {
+  color: #0f0; /* Change to green on hover */
 }
+
+body {
+  padding-bottom: 80px; /* To avoid content being hidden behind the bottom nav */
+}
+
 
 
 /* Add this style to your existing CSS */
