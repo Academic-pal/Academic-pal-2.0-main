@@ -1491,3 +1491,41 @@ svg {
 .portfolio-button:hover {
   background-color:#ffc107;
 }
+
+@media (max-width: 768px) {
+  .portfolio-card {
+      max-width: 90%;
+      padding: 15px;
+  }
+
+  .portfolio-content h3 {
+      font-size: 1.3em;
+  }
+
+  .portfolio-content p {
+      font-size: 1em;
+  }
+
+  .portfolio-button {
+      padding: 8px 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .portfolio-card {
+      max-width: 100%;
+      padding: 10px;
+  }
+
+  .portfolio-content h3 {
+      font-size: 1.2em;
+  }
+
+  .portfolio-content p {
+      font-size: 0.9em;
+  }
+
+  .portfolio-button {
+      padding: 6px 12px;
+  }
+}
