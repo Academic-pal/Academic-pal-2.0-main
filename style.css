@@ -1449,7 +1449,7 @@ svg {
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 1px solid #ddd;
+  border: 1px solid #000000;
   border-radius: 8px;
   padding: 20px;
   box-shadow: 0 4px 8px rgba(255, 253, 253, 0.1);
