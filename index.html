@@ -398,7 +398,27 @@
       </a>
   </nav>
     
-    
+
+    <!-- Chatbot toggle button -->
+    <div class="chatbot-toggle" onclick="toggleChatbot()">
+      <i class="fas fa-comments"></i>
+  </div>
+
+  <!-- Chatbot container (hidden by default) -->
+  <div class="chat-container" id="chat-container">
+      <div class="chat-header">
+          <h2>Academic Pal</h2>
+          <button class="close-button" onclick="closeChatbot()">×</button>
+      </div>
+      <div class="chat-box" id="chat-box">
+          <div class="message bot-message">Welcome to the B.Tech Guide! In which year are you currently studying?</div>
+      </div>
+      <div class="input-container">
+          <input type="text" id="user-input" placeholder="Type your message here...">
+          <button onclick="sendMessage()">Send</button>
+      </div>
+  </div>
+  
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
 <script src="script.js"></script>

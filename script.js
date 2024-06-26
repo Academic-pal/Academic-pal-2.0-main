@@ -221,3 +221,81 @@ document.addEventListener("DOMContentLoaded", () => {
       svg.appendChild(path);
   }
 });
+
+
+
+
+
+
+
+
+let chatbotOpen = false;
+
+document.getElementById("user-input").addEventListener("keypress", function(event) {
+    if (event.key === "Enter") {
+        sendMessage();
+    }
+});
+
+function toggleChatbot() {
+    const chatContainer = document.getElementById("chat-container");
+    chatbotOpen = !chatbotOpen;
+    chatContainer.style.display = chatbotOpen ? "block" : "none";
+}
+
+function closeChatbot() {
+    const chatContainer = document.getElementById("chat-container");
+    chatContainer.style.display = "none";
+    chatbotOpen = false;
+}
+
+function sendMessage() {
+    const userInput = document.getElementById("user-input").value.trim();
+    if (userInput === "") return;
+
+    appendMessage(userInput, "user-message");
+    document.getElementById("user-input").value = "";
+
+    setTimeout(() => {
+        handleUserInput(userInput.toLowerCase());
+    }, 500);
+}
+
+function appendMessage(message, className) {
+    const chatBox = document.getElementById("chat-box");
+    const messageElement = document.createElement("div");
+    messageElement.className = `message ${className}`;
+    messageElement.innerHTML = message; // Use innerHTML to render links as clickable
+    chatBox.appendChild(messageElement);
+    chatBox.scrollTop = chatBox.scrollHeight;
+}
+
+function handleUserInput(input) {
+    if (input.includes("1st year") || input.includes("first year")) {
+        appendMessage("Which semester are you in? 1st sem or 2nd sem?", "bot-message");
+    } else if (input.includes("2nd year") || input.includes("second year")) {
+        appendMessage("Which semester are you in? 3rd sem or 4th sem?", "bot-message");
+    } else if (input.includes("3rd year") || input.includes("third year")) {
+        appendMessage("Which semester are you in? 5th sem or 6th sem?", "bot-message");
+    } else if (input.includes("4th year") || input.includes("fourth year")) {
+        appendMessage("Which semester are you in? 7th sem or 8th sem?", "bot-message");
+    } else if (input.includes("1st sem") || input.includes("1st semester")) {
+        appendMessage("<a href='https://hari-hara7.github.io/B-tech-1st-sem/' target='_blank'>Here is your link for 1st semester</a>", "bot-message");
+    } else if (input.includes("2nd sem") || input.includes("2nd semester")) {
+        appendMessage("<a href='https://hari-hara7.github.io/B-tech-2nd-sem/' target='_blank'>Here is your link for 2nd semester</a>", "bot-message");
+    } else if (input.includes("3rd sem") || input.includes("3rd semester")) {
+        appendMessage("<a href='https://hari-hara7.github.io/B-tech-3rd-sem/' target='_blank'>Here is your link for 3rd semester</a>", "bot-message");
+    } else if (input.includes("4th sem") || input.includes("4th semester")) {
+        appendMessage("<a href='https://hari-hara7.github.io/B-tech-4th-sem/' target='_blank'>Here is your link for 4th semester</a>", "bot-message");
+    } else if (input.includes("5th sem") || input.includes("5th semester")) {
+        appendMessage("<a href='https://github.com/Hari-hara7/B-tech-5th-sem.git' target='_blank'>Here is your link for 5th semester</a>", "bot-message");
+    } else if (input.includes("6th sem") || input.includes("6th semester")) {
+        appendMessage("<a href='https://hari-hara7.github.io/B-tech-6th-sem/' target='_blank'>Here is your link for 6th semester</a>", "bot-message");
+    } else if (input.includes("7th sem") || input.includes("7th semester")) {
+        appendMessage("<a href='https://hari-hara7.github.io/B-tech-7th-sem/' target='_blank'>Here is your link for 7th semester</a>", "bot-message");
+    } else if (input.includes("8th sem") || input.includes("8th semester")) {
+        appendMessage("<a href='https://hari-hara7.github.io/B-tech-8th-sem/' target='_blank'>Here is your link for 8th semester</a>", "bot-message");
+    } else {
+        appendMessage("I didn't understand that. Please specify your year and semester.", "bot-message");
+    }
+}
