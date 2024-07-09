@@ -27,7 +27,15 @@ body {
     margin-bottom: 0;
     padding: 0 25px;
   }
- 
+  .anton-sc-regular {
+    font-family: "Anton SC", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  
+
+
 header {
 background-color: #000000;
 position: fixed;
@@ -1657,4 +1665,27 @@ button:hover {
       bottom: 70px;
       right: 20px;
   }
+}
+
+
+
+
+.bodoni-moda-sc-<uniquifier> {
+  font-family: "Bodoni Moda SC", serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+}
+
+
+.baskervville-sc-regular {
+  font-family: "Baskervville SC", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.black-ops-one-regular {
+  font-family: "Black Ops One", system-ui;
+  font-weight: 400;
+  font-style: normal;
 }
